@@ -16,5 +16,11 @@
             "type": "dart",
             "program": "custom_rating_bar/example/lib/main.dart"
         },
+        {
+            "name": "responsive_config_example",
+            "request": "launch",
+            "type": "dart",
+            "program": "responsive_config/example/lib/main.dart"
+        },
     ]
 }

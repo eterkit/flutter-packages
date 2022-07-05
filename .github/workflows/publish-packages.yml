@@ -25,3 +25,17 @@ jobs:
           relativePath: auto_animated_list
           flutter: true
           skipTests: true
+      - name: 'Publish responsive_annotation'
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: responsive_annotation
+          flutter: true
+          skipTests: true
+      - name: 'Publish responsive_config'
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: responsive_config
+          flutter: true
+          skipTests: true

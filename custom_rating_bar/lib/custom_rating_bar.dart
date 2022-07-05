@@ -97,7 +97,7 @@ class RatingBar extends StatefulWidget {
   final bool _readOnly;
 
   @override
-  _RatingBarState createState() => _RatingBarState();
+  State<RatingBar> createState() => _RatingBarState();
 }
 
 class _RatingBarState extends State<RatingBar> {
@@ -157,31 +157,31 @@ class _RatingBarState extends State<RatingBar> {
   }
 
   Widget _buildIconView(int position) {
-    IconData _iconData;
-    Color _color;
-    double _rating;
+    IconData iconData;
+    Color color;
+    double rating;
     if (widget._readOnly) {
       if (widget.isHalfAllowed) {
-        _rating = widget.initialRating;
+        rating = widget.initialRating;
       } else {
-        _rating = widget.initialRating.roundToDouble();
+        rating = widget.initialRating.roundToDouble();
       }
     } else {
       final currentRating = _currentRating;
       if (currentRating == null) throw AssertionError('rating can\'t null');
-      _rating = currentRating;
+      rating = currentRating;
     }
-    if (position > _rating + 0.5) {
-      _iconData = widget.emptyIcon;
-      _color = widget.emptyColor;
-    } else if (position == _rating + 0.5) {
+    if (position > rating + 0.5) {
+      iconData = widget.emptyIcon;
+      color = widget.emptyColor;
+    } else if (position == rating + 0.5) {
       // TODO: Remove force unwrap.
-      _iconData = widget.halfFilledIcon!;
-      _color = widget.halfFilledColor;
+      iconData = widget.halfFilledIcon!;
+      color = widget.halfFilledColor;
     } else {
-      _iconData = widget.filledIcon;
-      _color = widget.filledColor;
+      iconData = widget.filledIcon;
+      color = widget.filledColor;
     }
-    return Icon(_iconData, color: _color, size: widget.size);
+    return Icon(iconData, color: color, size: widget.size);
   }
 }

@@ -1,6 +1,6 @@
 # Example
 
-To use [responsive_config](https://github.com/marcsanny/responsive-config/tree/main/responsive_config) in your flutter application, add these dependencies to your pubspec.yaml.
+To use [responsive_config](https://github.com/eterkit/flutter-packages/tree/main/responsive_config) in your flutter application, add these dependencies to your pubspec.yaml.
 
 ```yaml
 dependencies:
@@ -11,13 +11,13 @@ dev_dependencies:
   responsive_config: <latest>
 ```
 
-Annotate your code with classes defined in [responsive_annotation](https://github.com/marcsanny/responsive-config/tree/main/responsive_annotation/lib/annotations).
+Annotate your code with classes defined in [responsive_annotation](https://github.com/eterkit/flutter-packages/tree/main/responsive_annotation/lib/annotations).
 
-See [lib/app_config.dart](https://github.com/marcsanny/responsive-config/blob/main/example/lib/app_config.dart) for an example of a file using these annotations.
+See [lib/app_config.dart](https://github.com/eterkit/flutter-packages/tree/main/responsive_config/example/lib/app_config.dart) for an example of a file using these annotations.
 
-See [lib/app_config.g.dart](https://github.com/marcsanny/responsive-config/blob/main/example/lib/app_config.g.dart) for an example of a generated file with responsive code.
+See [lib/app_config.g.dart](https://github.com/eterkit/flutter-packages/tree/main/responsive_config/example/lib/app_config.g.dart) for an example of a generated file with responsive code.
 
-See [build.yaml](https://github.com/marcsanny/responsive-config/blob/main/example/build.yaml) for an example of a file using build options.
+See [build.yaml](https://github.com/eterkit/flutter-packages/tree/main/responsive_config/example/build.yaml) for an example of a file using build options.
 
 Run `flutter pub run build_runner build` to generate files into your source directory.
 
@@ -30,4 +30,4 @@ Run `flutter pub run build_runner build` to generate files into your source dire
 [INFO] Succeeded after 10.5s with 2 outputs (7 actions)
 ```
 
-See [lib/example.dart](https://github.com/marcsanny/responsive-config/blob/main/example/lib/main.dart) for the example of using `AppConfig.of(context)`.
+See [lib/main.dart](https://github.com/eterkit/flutter-packages/tree/main/responsive_config/example/lib/main.dart) for the example of using `AppConfig.of(context)`.

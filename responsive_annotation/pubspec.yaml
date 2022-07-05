@@ -2,7 +2,7 @@ name: responsive_annotation
 description: >-
   Annotations that supports responsive code generation via 
   the `responsive_config` package.
-version: 0.1.6
+version: 0.1.7
 homepage: https://github.com/eterkit/flutter-packages/tree/main/responsive_annotation
 repository: https://github.com/eterkit/flutter-packages
 
@@ -13,7 +13,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.8.0
+  meta: ^1.7.0
 
 dev_dependencies:
   flutter_test:

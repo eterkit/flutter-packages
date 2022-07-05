@@ -1,5 +1,5 @@
 name: responsive_config
-version: 0.1.8
+version: 0.1.9
 description: >-
   Code generation package, that allows generating 
   responsive classes and responsive variables with annotations.

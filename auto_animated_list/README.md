@@ -25,6 +25,6 @@ AutoAnimatedList<Fruit>(
 
 ### Full example
 
-[Source code](https://github.com/eterkit/flutter/auto_animated_list/tree/main/example)
+[Source code](https://github.com/eterkit/flutter-packages/auto_animated_list/tree/main/example)
 
 An example showing how to set up and use AutoAnimatedList widget.

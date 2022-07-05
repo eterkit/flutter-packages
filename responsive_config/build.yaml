@@ -1,0 +1,20 @@
+targets:
+  $default:
+    builders:
+      responsive_config:
+        enabled: true
+        options:
+          desktop_breakpoint: 1000
+    sources:
+      exclude:
+        - test/concept/**
+
+builders:
+  responsive_config:
+    import: "package:responsive_config/builder.dart"
+    builder_factories:
+      - responsiveConfig
+    build_extensions: {".dart": ["responsive_config.g.dart"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]

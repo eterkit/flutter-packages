@@ -11,6 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  auto_animated_list:
+    # When depending on this package from a real application you should use:
+    #   app_usage: ^x.y.z
+    # See https://dart.dev/tools/pub/dependencies#version-constraints
+    path: ../
+  fuzzy: 0.4.0-nullsafety.0
 
   cupertino_icons: ^1.0.5
 

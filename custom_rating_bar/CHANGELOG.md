@@ -1,3 +1,11 @@
+## 2.0.2
+
+* Update readme
+
+## 2.0.1
+
+* Move package to dedicated publisher repository
+
 ## 2.0.0
 
 * **Breaking change:** Migration to null safety 

@@ -6,8 +6,8 @@ This repository contains the source code of multiple plugins & packages for Flut
 
 | Name | Type | Android | iOS |    Page    |  
 |--------|-------------|:-------:|:---:|:---------:|
-| [custom_rating_bar](./custom_rating_bar) | Package | ✔️ | ✔️ |  [![pub package](https://img.shields.io/pub/v/custom_rating_bar.svg)](https://pub.dartlang.org/packages/custom_rating_bar) |
-| [auto_animated_list](./packages/light) | Package | ❌ | ❌ |  [![pub package](https://img.shields.io/pub/v/auto_animated_list.svg)](https://pub.dartlang.org/packages/auto_animated_list) |
+| [custom_rating_bar](./custom_rating_bar) | Package | :white_check_mark: | :white_check_mark: |  [![pub package](https://img.shields.io/pub/v/custom_rating_bar.svg)](https://pub.dartlang.org/packages/custom_rating_bar) |
+| [auto_animated_list](./packages/light) | Package | :white_check_mark: | :white_check_mark: |  [![pub package](https://img.shields.io/pub/v/auto_animated_list.svg)](https://pub.dartlang.org/packages/auto_animated_list) |
 
 
 ## Issues

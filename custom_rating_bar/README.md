@@ -1,4 +1,4 @@
-# rating_bar
+# custom_rating_bar
 
 Custom rating bar for flutter with support of: custom icons, half icons, directions, alignments & more.
 

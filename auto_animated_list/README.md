@@ -1,10 +1,13 @@
 # auto_animated_list
 
-AutoAnimatedList Widget that supports automatic animations when list items are changed.
+Zero boilerplate AutoAnimatedList Widget that supports automatic animations when list items are changed.
 
-<img src="https://raw.githubusercontent.com/eterkit/flutter-packages/auto_animated_list/main/example.gif">
+## Preview
+(Keep in mind that gif will not show the actual performance of the widget)
 
-# example
+<img src="https://github.com/eterkit/flutter-packages/blob/main/auto_animated_list/example.gif?raw=true">
+
+# Example usage
 
 ### How to use
 

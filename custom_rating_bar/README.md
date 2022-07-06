@@ -34,4 +34,4 @@ RatingBar.readOnly(
 
 ### Examples
 
-<img src="https://raw.githubusercontent.com/marcsanny/custom_rating_bar/main/examples.png">
+<img src="https://github.com/eterkit/flutter-packages/blob/main/custom_rating_bar/examples.png?raw=true">

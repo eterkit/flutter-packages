@@ -1,3 +1,7 @@
+## 2.0.4
+
+* Update readme
+
 ## 2.0.3
 
 * Update repository path and homepage

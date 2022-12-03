@@ -2,37 +2,44 @@ name: Publish
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   publish:
     name: Publish if version bumped
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
+      - name: "Checkout"
         uses: actions/checkout@v3
-      - name: 'Publish custom_rating_bar'
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: custom_rating_bar
-          flutter: true
-          skipTests: true
-      - name: 'Publish auto_animated_list'
+      - name: "auto_animated_list"
         uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           relativePath: auto_animated_list
           flutter: true
           skipTests: true
-      - name: 'Publish responsive_annotation'
+      - name: "edge_detector"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: edge_detector
+          flutter: true
+          skipTests: true
+      - name: "custom_rating_bar"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: custom_rating_bar
+          flutter: true
+          skipTests: true
+      - name: "responsive_annotation"
         uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           relativePath: responsive_annotation
           flutter: true
           skipTests: true
-      - name: 'Publish responsive_config'
+      - name: "responsive_config"
         uses: k-paxian/dart-package-publisher@master
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}

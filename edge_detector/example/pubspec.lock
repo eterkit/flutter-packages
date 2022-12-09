@@ -43,13 +43,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.3+2"
+  custom_cropper:
+    dependency: "direct main"
+    description:
+      path: "../../custom_cropper"
+      relative: true
+    source: path
+    version: "1.0.0"
   edge_detector:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.1"
+    version: "1.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -101,7 +108,7 @@ packages:
     source: sdk
     version: "0.0.0"
   http:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: http
       url: "https://pub.dartlang.org"

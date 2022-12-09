@@ -26,5 +26,4 @@ Future<void> _detectEdges() async {
 
 ### Full example
 
-Full example showing how to set up and use `EdgeDetector`.
-[Source code](https://github.com/eterkit/flutter-packages/tree/main/edge_detector/example)
+Full example showing how to set up and use `EdgeDetector`. [Source code](https://github.com/eterkit/flutter-packages/tree/main/edge_detector/example)

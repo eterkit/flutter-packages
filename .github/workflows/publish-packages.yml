@@ -25,6 +25,13 @@ jobs:
           relativePath: edge_detector
           flutter: true
           skipTests: true
+      - name: "custom_cropper"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: custom_cropper
+          flutter: true
+          skipTests: true
       - name: "custom_rating_bar"
         uses: k-paxian/dart-package-publisher@master
         with:

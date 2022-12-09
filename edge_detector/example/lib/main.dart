@@ -1,10 +1,11 @@
 import 'dart:io';
 
+import 'package:custom_cropper/custom_cropper.dart';
 import 'package:edge_detector/edge_detector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:image_picker/image_picker.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 void main() {
@@ -34,17 +35,22 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
+  final CropController _cropController = CropController(outputPixelRatio: 3);
+
   File? _imageFile;
+  Uint8List? _croppedData;
+  List<Offset>? _edges;
 
   @override
   void initState() {
     super.initState();
-    _setDemoImage();
+    _setInitialImage();
   }
 
   @override
   Widget build(BuildContext context) {
     final imageFile = _imageFile;
+    final croppedData = _croppedData;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edge Detector Example'),
@@ -53,34 +59,48 @@ class _ExamplePageState extends State<ExamplePage> {
         padding: const EdgeInsets.all(16).copyWith(
           bottom: MediaQuery.of(context).padding.bottom + 16,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: [
-            Expanded(
-              child: imageFile != null
-                  ? Center(child: ImageCropper.file(imageFile))
-                  : const SizedBox.expand(),
+            Row(
+              children: [
+                _ActionButton(
+                  label: 'Pick image',
+                  onPressed: _pickImage,
+                ),
+                const SizedBox(width: 16),
+                _ActionButton(
+                  label: 'Detect edges',
+                  onPressed: _detectEdges,
+                ),
+              ],
             ),
-            ElevatedButton(
-              onPressed: _pickImage,
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size.fromHeight(56),
+            const SizedBox(height: 16),
+            if (imageFile != null)
+              CustomCropper(
+                imageFile,
+                initialCorners: _edges,
+                controller: _cropController,
               ),
-              child: const Text('Pick image'),
-            ),
+            if (croppedData != null) ...[
+              const SizedBox(height: 16),
+              Image.memory(
+                croppedData,
+              ),
+            ]
           ],
         ),
       ),
     );
   }
 
-  Future<void> _setDemoImage() async {
-    final response = await http.get(Uri.parse(_Constants.demoImageUrl));
+  Future<void> _setInitialImage() async {
+    final bytes = await rootBundle.load('assets/images/sample.jpg');
+    final imageData =
+        bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
     final directory = (await getTemporaryDirectory()).path;
     final path = '$directory/edge-detector-demo-image.jpg';
     final file = File(path);
-    await file.writeAsBytes(response.bodyBytes);
+    await file.writeAsBytes(imageData);
     setState(() => _imageFile = file);
   }
 
@@ -89,9 +109,35 @@ class _ExamplePageState extends State<ExamplePage> {
     if (image == null) return;
     setState(() => _imageFile = File(image.path));
   }
+
+  Future<void> _detectEdges() async {
+    final imageFile = _imageFile;
+    if (imageFile == null) return;
+    final edges = await EdgeDetector().detectEdges(imageFile);
+    if (edges == null) return;
+    setState(() => _edges = edges.values);
+  }
 }
 
-abstract class _Constants {
-  static const demoImageUrl =
-      'https://media.istockphoto.com/id/1147445388/photo/white-paper-with-clipboard-on-black-background.jpg?b=1&s=170667a&w=0&k=20&c=QpttVdu4j624jgRGi0GjIlaHipsEeO9zEZbsYYe51s8=';
+class _ActionButton extends StatelessWidget {
+  const _ActionButton({
+    required this.label,
+    required this.onPressed,
+  });
+
+  final String label;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          fixedSize: const Size.fromHeight(56),
+        ),
+        child: Text(label),
+      ),
+    );
+  }
 }

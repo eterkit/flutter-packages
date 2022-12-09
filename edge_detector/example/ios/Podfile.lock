@@ -114,7 +114,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_ios/ios"
 
 SPEC CHECKSUMS:
-  edge_detector: 82d5596274fae88388f9fe2789438a3c7ccface9
+  edge_detector: 93d28bdac6c0032d200e737c6cbb43c49fc35045
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
   GoogleMLKit: 0017a6a8372e1a182139b9def4d89be5d87ca5a7

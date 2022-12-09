@@ -48,7 +48,7 @@ class _ExamplePageState extends State<ExamplePage> {
     final croppedData = _croppedData;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Custom Cropper Example'),
+        title: const Text('Auto Crop Example'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16).copyWith(

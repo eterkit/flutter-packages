@@ -49,6 +49,8 @@ class AutoCrop extends StatefulWidget {
 class _AutoCropState extends State<AutoCrop> {
   Edges? _edges;
 
+  static final GlobalKey _autoCropKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -65,8 +67,9 @@ class _AutoCropState extends State<AutoCrop> {
     }
     return CustomCropper(
       widget.imageFile,
+      key: _autoCropKey,
       controller: widget.controller,
-      initialCorners: _edges?.values,
+      initialEdges: _edges?.values,
     );
   }
 

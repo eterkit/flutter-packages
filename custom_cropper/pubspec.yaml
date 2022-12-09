@@ -2,7 +2,7 @@ name: custom_cropper
 description: >-
   Dart native image cropper package that allows cropping images 
   with a custom and adjustable shape. 
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/eterkit/flutter-packages/tree/main/custom_cropper
 repository: https://github.com/eterkit/flutter-packages
 

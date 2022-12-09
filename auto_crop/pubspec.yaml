@@ -2,7 +2,7 @@ name: auto_crop
 description: >-
   Flutter package that allows auto cropping images 
   with a custom and adjustable shape. 
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/eterkit/flutter-packages/tree/main/auto_crop
 repository: https://github.com/eterkit/flutter-packages
 
@@ -14,8 +14,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  custom_cropper:
-  edge_detector:
+  custom_cropper: ^1.0.1
+  edge_detector: ^1.0.1
 
 dev_dependencies:
   flutter_test:

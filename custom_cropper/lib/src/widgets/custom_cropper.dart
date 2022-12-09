@@ -95,8 +95,7 @@ class _CustomCropperState extends State<CustomCropper>
   @override
   void didUpdateWidget(covariant CustomCropper oldWidget) {
     super.didUpdateWidget(oldWidget);
-    final shouldReInitialize = (oldWidget.imageFile != widget.imageFile) ||
-        (oldWidget.initialEdges != widget.initialEdges);
+    final shouldReInitialize = oldWidget.imageFile != widget.imageFile;
     if (shouldReInitialize) _initialize();
   }
 

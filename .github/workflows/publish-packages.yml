@@ -18,6 +18,13 @@ jobs:
           relativePath: auto_animated_list
           flutter: true
           skipTests: true
+      - name: "auto_crop"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: auto_crop
+          flutter: true
+          skipTests: true
       - name: "edge_detector"
         uses: k-paxian/dart-package-publisher@master
         with:

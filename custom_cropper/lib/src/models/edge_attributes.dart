@@ -6,7 +6,7 @@ class EdgeAttributes {
   /// Default constructor for [EdgeAttributes].
   const EdgeAttributes({
     this.color = Colors.blue,
-    this.size = 20,
+    this.size = 30,
   });
 
   /// Color of the edge point.

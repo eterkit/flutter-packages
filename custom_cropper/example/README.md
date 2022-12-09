@@ -1,4 +1,4 @@
-# example
+# custom_cropper_example
 
 A new Flutter project.
 

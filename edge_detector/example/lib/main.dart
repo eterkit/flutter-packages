@@ -78,7 +78,7 @@ class _ExamplePageState extends State<ExamplePage> {
             if (imageFile != null)
               CustomCropper(
                 imageFile,
-                initialCorners: _edges,
+                initialEdges: _edges,
                 controller: _cropController,
               ),
             if (croppedData != null) ...[

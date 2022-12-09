@@ -14,8 +14,9 @@ import 'package:custom_cropper/src/widgets/widgets.dart';
 /// Widget dedicated for image cropping.
 /// Simply pass the [imageFile] and it will do all the magic for you.
 ///
-/// Optionally you can pass [EdgeAttributes] to customize edge points
-/// & [LineAttributes] to customize the lines between edges.
+/// Optionally you can pass [EdgeAttributes] to customize edge points,
+/// [LineAttributes] to customize the lines between edges
+/// & [OverlayAttributes] to customize the overlay outside the crop area.
 class CustomCropper extends StatefulWidget {
   /// Creates [CustomCropper] widget from given [imageFile].
   const CustomCropper(
@@ -25,8 +26,8 @@ class CustomCropper extends StatefulWidget {
     this.edgeAttributes = const EdgeAttributes(),
     this.lineAttributes = const LineAttributes(),
     this.overlayAttributes = const OverlayAttributes(),
-    this.initialCorners,
-  }) : assert(initialCorners == null || initialCorners.length == 4);
+    this.initialEdges,
+  }) : assert(initialEdges == null || initialEdges.length == 4);
 
   /// Crop controller is required to invoke crop methods from outside.
   final CropController controller;
@@ -49,12 +50,12 @@ class CustomCropper extends StatefulWidget {
   /// **Default:** See [OverlayAttributes] for default values.
   final OverlayAttributes overlayAttributes;
 
-  /// Initial corner points.
+  /// (Optional) Initial edges.
   ///
   /// **IMPORTANT**: This should be the points that are respective
   /// for the **original** image size (**not** the rendered image size).
   /// List length must be equal to `4`.
-  final List<Offset>? initialCorners;
+  final List<Offset>? initialEdges;
 
   @override
   State<CustomCropper> createState() => _CustomCropperState();
@@ -95,7 +96,7 @@ class _CustomCropperState extends State<CustomCropper>
   void didUpdateWidget(covariant CustomCropper oldWidget) {
     super.didUpdateWidget(oldWidget);
     final shouldReInitialize = (oldWidget.imageFile != widget.imageFile) ||
-        (oldWidget.initialCorners != widget.initialCorners);
+        (oldWidget.initialEdges != widget.initialEdges);
     if (shouldReInitialize) _initialize();
   }
 
@@ -192,13 +193,13 @@ class _CustomCropperState extends State<CustomCropper>
     final edgeSize = widget.edgeAttributes.size;
     final edgeOffset = Offset(edgeSize, edgeSize);
     final negativeEdgeOffset = Offset(edgeSize, -edgeSize);
-    final topLeft = widget.initialCorners?[0] ??
-        (_originalSize.topLeft(origin) + edgeOffset);
-    final topRight = widget.initialCorners?[1] ??
+    final topLeft =
+        widget.initialEdges?[0] ?? (_originalSize.topLeft(origin) + edgeOffset);
+    final topRight = widget.initialEdges?[1] ??
         (_originalSize.topRight(origin) - negativeEdgeOffset);
-    final bottomRight = widget.initialCorners?[2] ??
+    final bottomRight = widget.initialEdges?[2] ??
         (_originalSize.bottomRight(origin) - edgeOffset);
-    final bottomLeft = widget.initialCorners?[3] ??
+    final bottomLeft = widget.initialEdges?[3] ??
         (_originalSize.bottomLeft(origin) + negativeEdgeOffset);
 
     _points = {

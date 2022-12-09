@@ -3,6 +3,11 @@
 Dart native image cropper package that allows cropping images 
 with a custom and adjustable shape.
 
+#### :bulb: For Android & iOS developers. :bulb:
+Please check a great package that does auto edge detection for you, while still allows adjusting edges and cropping: [auto_crop](https://github.com/eterkit/flutter-packages/tree/main/auto_crop) - available for Android & iOS only.
+
+
+
 ## Preview
 <img src="https://github.com/eterkit/flutter-packages/blob/main/custom_cropper/example.gif?raw=true">
 
@@ -32,4 +37,4 @@ Widget build(Build context) {
 
 ### Full example
 
-Full example showing how to set up and use `EdgeDetector`. [Source code](https://github.com/eterkit/flutter-packages/tree/main/custom_cropper/example)
+Full example showing how to set up and use `CustomCropper`. [Source code](https://github.com/eterkit/flutter-packages/tree/main/custom_cropper/example)

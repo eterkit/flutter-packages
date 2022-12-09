@@ -75,9 +75,6 @@ class _ExamplePageState extends State<ExamplePage> {
               CustomCropper(
                 imageFile,
                 controller: _cropController,
-                edgeAttributes: const EdgeAttributes(
-                  size: 30,
-                ),
               ),
             if (croppedData != null) ...[
               const SizedBox(height: 16),

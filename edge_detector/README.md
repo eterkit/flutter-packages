@@ -4,9 +4,9 @@ Edge detector plugin based on google ml kit object detection.
 Allows basic edge detection for given image file.
 
 #### :bulb: Please note that this package is just for edge detection. :bulb:
-Please check other packages for cropping tools:
-1. [auto_crop](https://github.com/eterkit/flutter-packages/tree/main/auto_crop) - available for Android & iOS only.
-2. [custom_cropper](https://github.com/eterkit/flutter-packages/tree/main/custom_cropper)
+Check other packages for cropping tools:
+1. [auto_crop](https://pub.dev/packages/auto_crop) - available for Android & iOS only.
+2. [custom_cropper](https://pub.dev/packages/custom_cropper)
 
 
 ## Preview

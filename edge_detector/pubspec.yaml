@@ -2,7 +2,7 @@ name: edge_detector
 description: >-
   Edge detector plugin based on google ml kit object detection.
   Allows basic edge detection for given image.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/eterkit/flutter-packages/tree/main/edge_detector
 repository: https://github.com/eterkit/flutter-packages
 

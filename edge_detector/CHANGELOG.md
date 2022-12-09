@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Update readme
+
 ## 1.0.2
 
 * Added helper extension to convert original image edges to widget edges.

@@ -19,14 +19,21 @@ Please check other packages for cropping tools:
 ```dart
 Future<void> _detectEdges() async {
     final imageFile = File('path/to/image');
-    final edges = await EdgeDetector().detectEdges(imageFile);
-    if (edges == null) return;
+    // Edges that are respective for the original image size.
+    final originalImageEdges = await EdgeDetector().detectEdges(imageFile);
+    if (originalImageEdges == null) return;
 
-    final topLeft = edges.topLeft; // Offset(x,y).
-    final topRight = edges.topRight; // Offset(x,y).
-    final bottomRight = edges.bottomRight; // Offset(x,y).
-    final bottomLeft = edges.bottomLeft; // Offset(x,y).
-    final all = edges.values; // [topLeft, topRight, bottomRight, bottomLeft].
+    final topLeft = originalImageEdges.topLeft; // Offset(x,y).
+    final topRight = originalImageEdges.topRight; // Offset(x,y).
+    final bottomRight = originalImageEdges.bottomRight; // Offset(x,y).
+    final bottomLeft = originalImageEdges.bottomLeft; // Offset(x,y).
+    final all = originalImageEdges.values; // [topLeft, topRight, bottomRight, bottomLeft].
+
+    // Edges that are respective for the rendered image widget size.
+    final widgetEdges = await originalImageEdges.toWidgetEdges(
+      imageKey: _imageKey,
+      originalImageFile: imageFile,
+    );
 }
 ```
 

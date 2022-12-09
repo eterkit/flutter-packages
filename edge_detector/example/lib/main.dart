@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:custom_cropper/custom_cropper.dart';
 import 'package:edge_detector/edge_detector.dart';
+import 'package:edge_detector_example/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -35,10 +35,9 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
-  final CropController _cropController = CropController(outputPixelRatio: 3);
+  static final GlobalKey _imageKey = GlobalKey();
 
   File? _imageFile;
-  Uint8List? _croppedData;
   List<Offset>? _edges;
 
   @override
@@ -50,7 +49,7 @@ class _ExamplePageState extends State<ExamplePage> {
   @override
   Widget build(BuildContext context) {
     final imageFile = _imageFile;
-    final croppedData = _croppedData;
+    final edges = _edges;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edge Detector Example'),
@@ -76,17 +75,16 @@ class _ExamplePageState extends State<ExamplePage> {
             ),
             const SizedBox(height: 16),
             if (imageFile != null)
-              CustomCropper(
-                imageFile,
-                initialEdges: _edges,
-                controller: _cropController,
+              Stack(
+                children: [
+                  Image.file(
+                    imageFile,
+                    key: _imageKey,
+                    fit: BoxFit.contain,
+                  ),
+                  if (edges != null) Lines(edges),
+                ],
               ),
-            if (croppedData != null) ...[
-              const SizedBox(height: 16),
-              Image.memory(
-                croppedData,
-              ),
-            ]
           ],
         ),
       ),
@@ -94,7 +92,7 @@ class _ExamplePageState extends State<ExamplePage> {
   }
 
   Future<void> _setInitialImage() async {
-    final bytes = await rootBundle.load('assets/images/sample.jpg');
+    final bytes = await rootBundle.load('assets/images/1.jpg');
     final imageData =
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
     final directory = (await getTemporaryDirectory()).path;
@@ -113,9 +111,15 @@ class _ExamplePageState extends State<ExamplePage> {
   Future<void> _detectEdges() async {
     final imageFile = _imageFile;
     if (imageFile == null) return;
-    final edges = await EdgeDetector().detectEdges(imageFile);
-    if (edges == null) return;
-    setState(() => _edges = edges.values);
+
+    final originalImageEdges = await EdgeDetector().detectEdges(imageFile);
+    if (originalImageEdges == null) return;
+    final widgetEdges = await originalImageEdges.toWidgetEdges(
+      imageKey: _imageKey,
+      originalImageFile: imageFile,
+    );
+
+    setState(() => _edges = widgetEdges.values);
   }
 }
 

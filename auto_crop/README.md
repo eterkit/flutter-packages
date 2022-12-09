@@ -4,12 +4,12 @@ Dart native image cropper package that allows cropping images
 with a custom and adjustable shape.
 
 #### :bulb: Please note that the package is only for Android & iOS. :bulb:
-For other platforms I recommend using: [custom_cropper](https://github.com/eterkit/flutter-packages/tree/main/custom_cropper) - dart native cropper.
+For other platforms I recommend using: [custom_cropper](https://pub.dev/packages/custom_cropper) - dart native cropper.
 
 
 
 ## Preview
-<img src="https://github.com/eterkit/flutter-packages/blob/main/custom_cropper/example.gif?raw=true">
+<img src="https://github.com/eterkit/flutter-packages/blob/main/auto_crop/example.gif?raw=true">
 
 # Example usage
 

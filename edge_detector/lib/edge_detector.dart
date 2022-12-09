@@ -4,6 +4,7 @@ import 'package:edge_detector/src/models/edges.dart';
 import 'edge_detector_platform_interface.dart';
 
 export 'src/models/models.dart';
+export 'src/extensions/extensions.dart';
 
 /// Base class for [EdgeDetector] plugin.
 class EdgeDetector {

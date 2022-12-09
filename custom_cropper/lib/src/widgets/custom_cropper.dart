@@ -53,8 +53,14 @@ class CustomCropper extends StatefulWidget {
   /// (Optional) Initial edges.
   ///
   /// **IMPORTANT**: This should be the points that are respective
-  /// for the **original** image size (**not** the rendered image size).
-  /// List length must be equal to `4`.
+  /// for the **rendered** widget image size (**not** the original image size).
+  /// (See: `auto_crop` example: https://pub.dev/packages/auto_crop/example).
+  ///
+  /// List length must be equal to `4` and in proper order:
+  /// `topLeft`,
+  /// `topRight`,
+  /// `bottomRight`
+  /// `bottomLeft`.
   final List<Offset>? initialEdges;
 
   @override
@@ -192,36 +198,36 @@ class _CustomCropperState extends State<CustomCropper>
     final edgeSize = widget.edgeAttributes.size;
     final edgeOffset = Offset(edgeSize, edgeSize);
     final negativeEdgeOffset = Offset(edgeSize, -edgeSize);
-    final topLeft =
-        widget.initialEdges?[0] ?? (_originalSize.topLeft(origin) + edgeOffset);
-    final topRight = widget.initialEdges?[1] ??
-        (_originalSize.topRight(origin) - negativeEdgeOffset);
-    final bottomRight = widget.initialEdges?[2] ??
-        (_originalSize.bottomRight(origin) - edgeOffset);
-    final bottomLeft = widget.initialEdges?[3] ??
-        (_originalSize.bottomLeft(origin) + negativeEdgeOffset);
+    final topLeft = _originalSize.topLeft(origin) + edgeOffset;
+    final topRight = _originalSize.topRight(origin) - negativeEdgeOffset;
+    final bottomRight = _originalSize.bottomRight(origin) - edgeOffset;
+    final bottomLeft = _originalSize.bottomLeft(origin) + negativeEdgeOffset;
 
     _points = {
-      Corner.topLeft: topLeft *
-          shorterSideFactor(
-            _renderedSize,
-            _originalSize,
-          ),
-      Corner.topRight: topRight *
-          shorterSideFactor(
-            _renderedSize,
-            _originalSize,
-          ),
-      Corner.bottomRight: bottomRight *
-          shorterSideFactor(
-            _renderedSize,
-            _originalSize,
-          ),
-      Corner.bottomLeft: bottomLeft *
-          shorterSideFactor(
-            _renderedSize,
-            _originalSize,
-          ),
+      Corner.topLeft: widget.initialEdges?[0] ??
+          (topLeft *
+              shorterSideFactor(
+                _renderedSize,
+                _originalSize,
+              )),
+      Corner.topRight: widget.initialEdges?[1] ??
+          (topRight *
+              shorterSideFactor(
+                _renderedSize,
+                _originalSize,
+              )),
+      Corner.bottomRight: widget.initialEdges?[2] ??
+          (bottomRight *
+              shorterSideFactor(
+                _renderedSize,
+                _originalSize,
+              )),
+      Corner.bottomLeft: widget.initialEdges?[3] ??
+          (bottomLeft *
+              shorterSideFactor(
+                _renderedSize,
+                _originalSize,
+              )),
     };
   }
 

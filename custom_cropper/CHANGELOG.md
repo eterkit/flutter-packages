@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Small improvements
+
 ## 1.0.2
 
 * Update readme

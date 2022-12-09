@@ -31,7 +31,7 @@ extension SizeFromGlobalKeyExtension on GlobalKey {
   /// Returns max [Size] of this [GlobalKey] object.
   ///
   /// **NOTE:** The GlobalKey must be present in the widget tree
-  /// & the Widget itself has already been rendered.
+  /// & the Widget itself has to be already rendered.
   /// Otherwise it throws a [FlutterError].
   ///
   /// If you want to use this method in the same class before

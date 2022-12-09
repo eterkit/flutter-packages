@@ -59,6 +59,13 @@ class _AutoCropState extends State<AutoCrop> {
   }
 
   @override
+  void didUpdateWidget(covariant AutoCrop oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final shouldUpdate = oldWidget.imageFile != widget.imageFile;
+    if (shouldUpdate) _detectEdges();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (_edges == null) {
       return Image.file(
@@ -76,6 +83,7 @@ class _AutoCropState extends State<AutoCrop> {
   }
 
   Future<void> _detectEdges() async {
+    setState(() => _edges = null);
     final originalEdges = await EdgeDetector().detectEdges(widget.imageFile);
     final widgetEdges = await originalEdges?.toWidgetEdges(
       imageKey: _imageKey,

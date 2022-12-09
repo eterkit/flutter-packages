@@ -88,7 +88,7 @@ class _ExamplePageState extends State<ExamplePage> {
   }
 
   Future<void> _setInitialImage() async {
-    final bytes = await rootBundle.load('assets/images/sample.jpg');
+    final bytes = await rootBundle.load('assets/images/1.jpg');
     final imageData =
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
     final directory = (await getTemporaryDirectory()).path;

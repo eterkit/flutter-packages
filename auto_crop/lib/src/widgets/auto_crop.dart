@@ -49,6 +49,7 @@ class AutoCrop extends StatefulWidget {
 class _AutoCropState extends State<AutoCrop> {
   Edges? _edges;
 
+  static final GlobalKey _imageKey = GlobalKey();
   static final GlobalKey _autoCropKey = GlobalKey();
 
   @override
@@ -62,6 +63,7 @@ class _AutoCropState extends State<AutoCrop> {
     if (_edges == null) {
       return Image.file(
         widget.imageFile,
+        key: _imageKey,
         fit: BoxFit.contain,
       );
     }
@@ -74,7 +76,11 @@ class _AutoCropState extends State<AutoCrop> {
   }
 
   Future<void> _detectEdges() async {
-    final edges = await EdgeDetector().detectEdges(widget.imageFile);
-    setState(() => _edges = edges);
+    final originalEdges = await EdgeDetector().detectEdges(widget.imageFile);
+    final widgetEdges = await originalEdges?.toWidgetEdges(
+      imageKey: _imageKey,
+      originalImageFile: widget.imageFile,
+    );
+    setState(() => _edges = widgetEdges);
   }
 }

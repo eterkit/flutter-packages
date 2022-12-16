@@ -78,8 +78,14 @@ class _ExamplePageState extends State<ExamplePage> {
               ),
             if (croppedData != null) ...[
               const SizedBox(height: 16),
-              Image.memory(
-                croppedData,
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Text('asjhdkaj dkasjdbakshhsajkdhakjsd skdjsjk\najsdhkajsd ajdkhajkls\n dajkhdkjahdklsa'),
+                  Image.memory(
+                    croppedData,
+                  ),
+                ],
               ),
             ]
           ],

@@ -46,6 +46,13 @@ jobs:
           relativePath: custom_rating_bar
           flutter: true
           skipTests: true
+      - name: "permission_guard"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
+          relativePath: permission_guard
+          flutter: true
+          skipTests: true
       - name: "responsive_annotation"
         uses: k-paxian/dart-package-publisher@master
         with:

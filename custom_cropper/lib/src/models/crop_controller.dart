@@ -32,11 +32,21 @@ class CropController {
   /// final file = await File('path/to/file').writeAsBytes(data.toList())
   /// ```
   Future<Uint8List?> crop() async {
+    final recorder = PictureRecorder();
+    final canvas = Canvas(recorder);
     final boundary =
         cropperKey.currentContext?.findRenderObject() as RenderRepaintBoundary;
     final image = await boundary.toImage(pixelRatio: outputPixelRatio);
+    final imageSize = Size(image.width.toDouble(), image.height.toDouble());
 
-    final byteData = await image.toByteData(format: ImageByteFormat.png);
+    final paint = Paint();
+    canvas.drawImage(image, Offset.zero, paint);
+
+    final cropped = await recorder.endRecording().toImage(
+          imageSize.width.toInt(),
+          imageSize.height.toInt(),
+        );
+    final byteData = await cropped.toByteData(format: ImageByteFormat.png);
     return byteData?.buffer.asUint8List();
   }
 }

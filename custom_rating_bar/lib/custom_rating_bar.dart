@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class RatingBar extends StatefulWidget {
   /// Default constructor for [RatingBar].
   const RatingBar({
-    Key? key,
+    super.key,
     required this.filledIcon,
     required this.emptyIcon,
     required this.onRatingChanged,
@@ -26,8 +26,7 @@ class RatingBar extends StatefulWidget {
         assert(
           !isHalfAllowed || halfFilledIcon != null,
           'Please provide halfFilledIcon if isHalfAllowed is true.',
-        ),
-        super(key: key);
+        );
 
   /// Creates read only rating bar.
   ///
@@ -157,9 +156,12 @@ class _RatingBarState extends State<RatingBar> {
   }
 
   Widget _buildIconView(int position) {
+    final halfFilledIcon = widget.halfFilledIcon;
+
     IconData iconData;
     Color color;
     double rating;
+
     if (widget._readOnly) {
       if (widget.isHalfAllowed) {
         rating = widget.initialRating;
@@ -174,9 +176,8 @@ class _RatingBarState extends State<RatingBar> {
     if (position > rating + 0.5) {
       iconData = widget.emptyIcon;
       color = widget.emptyColor;
-    } else if (position == rating + 0.5) {
-      // TODO: Remove force unwrap.
-      iconData = widget.halfFilledIcon!;
+    } else if (position == rating + 0.5 && halfFilledIcon != null) {
+      iconData = halfFilledIcon;
       color = widget.halfFilledColor;
     } else {
       iconData = widget.filledIcon;

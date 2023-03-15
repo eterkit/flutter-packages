@@ -15,7 +15,7 @@ extension PermissionGuardDefaultValuesExtension on PermissionStatus {
       case PermissionStatus.permanentlyDenied:
         return 'Permission permanently denied';
       case PermissionStatus.granted:
-        throw FallThroughError();
+        throw AssertionError('Shouldn\'t be called');
     }
   }
 
@@ -31,7 +31,7 @@ extension PermissionGuardDefaultValuesExtension on PermissionStatus {
       case PermissionStatus.permanentlyDenied:
         return 'Please open settings to grant the access.';
       case PermissionStatus.granted:
-        throw FallThroughError();
+        throw AssertionError('Shouldn\'t be called');
     }
   }
 
@@ -45,7 +45,7 @@ extension PermissionGuardDefaultValuesExtension on PermissionStatus {
       case PermissionStatus.permanentlyDenied:
         return 'Open settings';
       case PermissionStatus.granted:
-        throw FallThroughError();
+        throw AssertionError('Shouldn\'t be called');
     }
   }
 }

@@ -18,27 +18,6 @@ jobs:
           relativePath: auto_animated_list
           flutter: true
           skipTests: true
-      - name: "auto_crop"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: auto_crop
-          flutter: true
-          skipTests: true
-      - name: "edge_detector"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: edge_detector
-          flutter: true
-          skipTests: true
-      - name: "custom_cropper"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: custom_cropper
-          flutter: true
-          skipTests: true
       - name: "custom_rating_bar"
         uses: k-paxian/dart-package-publisher@master
         with:
@@ -51,19 +30,5 @@ jobs:
         with:
           credentialJson: ${{ secrets.CREDENTIAL_JSON }}
           relativePath: permission_guard
-          flutter: true
-          skipTests: true
-      - name: "responsive_annotation"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: responsive_annotation
-          flutter: true
-          skipTests: true
-      - name: "responsive_config"
-        uses: k-paxian/dart-package-publisher@master
-        with:
-          credentialJson: ${{ secrets.CREDENTIAL_JSON }}
-          relativePath: responsive_config
           flutter: true
           skipTests: true

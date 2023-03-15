@@ -17,10 +17,10 @@
             "program": "custom_rating_bar/example/lib/main.dart"
         },
         {
-            "name": "responsive_config_example",
+            "name": "permission_guard_example",
             "request": "launch",
             "type": "dart",
-            "program": "responsive_config/example/lib/main.dart"
+            "program": "permission_guard/example/lib/main.dart"
         },
     ]
 }

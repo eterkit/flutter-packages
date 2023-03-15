@@ -32,64 +32,52 @@ extension RequestGuardedMethodExtension on Permission {
     bool fillAvailableSpace = false,
   }) async {
     PermissionStatus status = await request();
-    if (!context.mounted) return null;
-
     if (options.validStatuses.contains(status)) return status;
 
-    return showDialog<PermissionStatus>(
-      context: context,
-      anchorPoint: anchorPoint,
-      barrierColor: barrierColor,
-      barrierDismissible: barrierDismissible,
-      barrierLabel: barrierLabel,
-      routeSettings: routeSettings,
-      useRootNavigator: useRootNavigator,
-      builder: (context) => WillPopScope(
-        onWillPop: () async {
-          Navigator.of(context).pop(status);
-          return true;
-        },
-        child: AlertDialog(
-          backgroundColor: backgroundColor,
-          insetPadding: insetPadding,
-          contentPadding: EdgeInsets.zero,
-          content: Stack(
-            children: [
-              Column(
-                mainAxisSize:
-                    fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
-                children: [
-                  PermissionGuard(
-                    permission: this,
-                    options: options.copyWith(
-                      requestOnInit: false,
-                      skipInitialChange: true,
-                      padding: contentPadding,
+    if (context.mounted) {
+      return showDialog<PermissionStatus>(
+        context: context,
+        anchorPoint: anchorPoint,
+        barrierColor: barrierColor,
+        barrierDismissible: barrierDismissible,
+        barrierLabel: barrierLabel,
+        routeSettings: routeSettings,
+        useRootNavigator: useRootNavigator,
+        builder: (context) => WillPopScope(
+          onWillPop: () async {
+            Navigator.of(context).pop(status);
+            return true;
+          },
+          child: AlertDialog(
+            backgroundColor: backgroundColor,
+            insetPadding: insetPadding,
+            contentPadding: EdgeInsets.zero,
+            content: Stack(
+              children: [
+                Column(
+                  mainAxisSize:
+                      fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
+                  children: [
+                    PermissionGuard(
+                      permission: this,
+                      options: options.copyWith(
+                        requestOnInit: false,
+                        skipInitialChange: true,
+                        padding: contentPadding,
+                      ),
+                      onPermissionStatusChanged: (value) => status = value,
+                      onPermissionGranted: () => Navigator.of(context).pop(),
+                      child: const SizedBox.shrink(),
                     ),
-                    onPermissionStatusChanged: (value) => status = value,
-                    onPermissionGranted: () => Navigator.of(context).pop(),
-                    child: const SizedBox.shrink(),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-/// Helper extension that allows using BuildContexts across async gaps.
-/// Should be removed after: https://twitter.com/remi_rousselet/status/1570794942251016192?s=20&t=u_GabyNQ9hTVmG3gmVeF6w
-extension _MountedContextExtension on BuildContext {
-  /// Helper getter that allows using BuildContexts across async gaps.
-  bool get mounted {
-    try {
-      (this as Element).widget;
-      return true;
-    } on TypeError catch (_) {
-      return false;
+      );
+    } else {
+      return null;
     }
   }
 }

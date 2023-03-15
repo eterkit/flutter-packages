@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-flutter pub run import_sorter:main
-flutter format lib/* -l 80
-flutter format test/* -l 80
+fvm flutter pub run import_sorter:main
+fvm dart format lib/* -l 80
+fvm dart format test/* -l 80

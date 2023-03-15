@@ -1,13 +1,14 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[package_name]: BUG - Descriptive title"
-labels: ''
-assignees: ''
+title: "[package_name]: Descriptive & short bug title"
+labels: ["bug"]
+assignees: 
+    - marcsanny
 
 ---
 
-**Describe the bug**
+**Description**
 A clear and concise description of what the bug is.
 
 **To Reproduce**

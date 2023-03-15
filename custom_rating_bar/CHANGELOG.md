@@ -1,3 +1,8 @@
+## 2.0.5
+
+* Upgrade dependencies
+* Add screenshots to pub.dev
+
 ## 2.0.4
 
 * Update readme

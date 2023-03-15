@@ -2,29 +2,32 @@ import 'package:custom_rating_bar/custom_rating_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(_MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class _MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Custom Rating Bar Demo',
+      title: 'Custom Rating Bar Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ExamplePage(),
+      home: const ExamplePage(),
     );
   }
 }
 
 class ExamplePage extends StatelessWidget {
+  const ExamplePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
-        padding: const EdgeInsets.all(16).copyWith(top: 24),
+        padding: const EdgeInsets.all(16)
+            .copyWith(top: MediaQuery.of(context).padding.top + 16),
         children: [
           _buildDivider('Half icons'),
           RatingBar(
@@ -32,12 +35,11 @@ class ExamplePage extends StatelessWidget {
             emptyIcon: Icons.star_border,
             onRatingChanged: (value) => debugPrint('$value'),
             initialRating: 3,
-            maxRating: 5,
             alignment: Alignment.center,
           ),
           const SizedBox(height: 16),
           _buildDivider('Custom colors'),
-          RatingBar.readOnly(
+          const RatingBar.readOnly(
             isHalfAllowed: true,
             alignment: Alignment.center,
             filledIcon: Icons.star,
@@ -51,7 +53,7 @@ class ExamplePage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           _buildDivider('Custom icons'),
-          RatingBar.readOnly(
+          const RatingBar.readOnly(
             isHalfAllowed: true,
             alignment: Alignment.center,
             filledIcon: Icons.wb_sunny,
@@ -60,11 +62,10 @@ class ExamplePage extends StatelessWidget {
             emptyColor: Colors.blue,
             halfFilledColor: Colors.grey,
             initialRating: 4,
-            maxRating: 5,
           ),
           const SizedBox(height: 16),
           _buildDivider('Vertical'),
-          RatingBar.readOnly(
+          const RatingBar.readOnly(
             direction: Axis.vertical,
             isHalfAllowed: true,
             alignment: Alignment.center,
@@ -76,20 +77,18 @@ class ExamplePage extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           _buildDivider('Aligned left'),
-          RatingBar.readOnly(
+          const RatingBar.readOnly(
             isHalfAllowed: true,
-            alignment: Alignment.centerLeft,
             filledIcon: Icons.face,
             filledColor: Colors.greenAccent,
             halfFilledColor: Colors.amberAccent,
             emptyIcon: Icons.face,
             initialRating: 3.5,
-            maxRating: 5,
             halfFilledIcon: Icons.face,
           ),
           const SizedBox(height: 16),
           _buildDivider('Aligned right'),
-          RatingBar.readOnly(
+          const RatingBar.readOnly(
             isHalfAllowed: true,
             alignment: Alignment.centerRight,
             filledIcon: Icons.star,
@@ -97,7 +96,6 @@ class ExamplePage extends StatelessWidget {
             filledColor: Colors.greenAccent,
             halfFilledColor: Colors.greenAccent,
             initialRating: 3.5,
-            maxRating: 5,
             halfFilledIcon: Icons.star_half,
           ),
         ],
@@ -107,7 +105,6 @@ class ExamplePage extends StatelessWidget {
 
   Widget _buildDivider(String text) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
         children: [
           Flexible(
             child: Divider(

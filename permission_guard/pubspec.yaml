@@ -2,8 +2,13 @@ name: permission_guard
 description: >-
   UI wrapper around permission_handler package 
   that makes handling permission states easy.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/eterkit/flutter-packages/tree/main/permission_guard
+screenshots:
+  - description: 'Example of permission guard in a widget.'
+    path: widget.gif
+  - description: 'Example of permission guard in a dialog.'
+    path: dialog.gif
 
 environment:
   sdk: '>=2.18.4 <3.0.0'

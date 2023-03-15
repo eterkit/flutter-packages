@@ -2,9 +2,12 @@ name: custom_rating_bar
 description: >- 
   Custom rating bar for flutter with support of 
   custom icons, half icons, directions, alignments & more.
-version: 2.0.4
+version: 2.0.5
 homepage: https://github.com/eterkit/flutter-packages/tree/main/custom_rating_bar
 repository: https://github.com/eterkit/flutter-packages
+screenshots:
+  - description: 'Examples usage of rating bars.'
+    path: examples.png
 
 environment:
   sdk: ">=2.17.0 <3.0.0"

@@ -92,6 +92,7 @@ class _PermissionGuardState extends State<PermissionGuard>
         break;
       case AppLifecycleState.inactive:
       case AppLifecycleState.detached:
+      case AppLifecycleState.hidden:
         break;
     }
   }

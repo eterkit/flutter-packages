@@ -5,47 +5,41 @@ import 'package:permission_guard/permission_guard.dart';
 extension PermissionGuardDefaultValuesExtension on PermissionStatus {
   /// Default value for `title` UI element.
   String get defaultTitle {
-    switch (this) {
-      case PermissionStatus.denied:
-        return 'Permission denied';
-      case PermissionStatus.restricted:
-        return 'Permission restricted';
-      case PermissionStatus.limited:
-        return 'Permission limited';
-      case PermissionStatus.permanentlyDenied:
-        return 'Permission permanently denied';
-      case PermissionStatus.granted:
-        throw AssertionError('Shouldn\'t be called');
-    }
+    return switch (this) {
+      PermissionStatus.denied => 'Permission denied',
+      PermissionStatus.restricted => 'Permission restricted',
+      PermissionStatus.limited ||
+      PermissionStatus.provisional =>
+        'Permission limited',
+      PermissionStatus.permanentlyDenied => 'Permission permanently denied',
+      PermissionStatus.granted => throw AssertionError('Shouldn\'t be called'),
+    };
   }
 
   /// Default value for `description` UI element.
   String get defaultDescription {
-    switch (this) {
-      case PermissionStatus.denied:
-        return 'Please grant the access to continue.';
-      case PermissionStatus.restricted:
-        return 'Please remove restrictions to continue.';
-      case PermissionStatus.limited:
-        return 'Please grant the full access to continue.';
-      case PermissionStatus.permanentlyDenied:
-        return 'Please open settings to grant the access.';
-      case PermissionStatus.granted:
-        throw AssertionError('Shouldn\'t be called');
-    }
+    return switch (this) {
+      PermissionStatus.denied => 'Please grant the access to continue.',
+      PermissionStatus.restricted => 'Please remove restrictions to continue.',
+      PermissionStatus.limited ||
+      PermissionStatus.provisional =>
+        'Please grant the full access to continue.',
+      PermissionStatus.permanentlyDenied =>
+        'Please open settings to grant the access.',
+      PermissionStatus.granted => throw AssertionError('Shouldn\'t be called'),
+    };
   }
 
   /// Default value for `action` UI element.
   String get defaultAction {
-    switch (this) {
-      case PermissionStatus.denied:
-        return 'Allow access';
-      case PermissionStatus.restricted:
-      case PermissionStatus.limited:
-      case PermissionStatus.permanentlyDenied:
-        return 'Open settings';
-      case PermissionStatus.granted:
-        throw AssertionError('Shouldn\'t be called');
-    }
+    return switch (this) {
+      PermissionStatus.denied => 'Allow access',
+      PermissionStatus.restricted => 'Please remove restrictions to continue.',
+      PermissionStatus.limited ||
+      PermissionStatus.provisional ||
+      PermissionStatus.permanentlyDenied =>
+        'Open settings',
+      PermissionStatus.granted => throw AssertionError('Shouldn\'t be called'),
+    };
   }
 }

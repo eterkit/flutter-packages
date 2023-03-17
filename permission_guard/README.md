@@ -57,9 +57,8 @@ Both `PermissionGuard` widget & `requestGuarded` method accepts
     double? iconSpacing,
     double? titleSpacing,
     double? descriptionSpacing,
+    // Useful to override default icon.
     Widget? icon,
-    //  Useful to override default icon.
-    this.icon,
     // Useful to override default strings with translated ones based on status.
     String Function(PermissionStatus status)? title,
     String Function(PermissionStatus status)? description,

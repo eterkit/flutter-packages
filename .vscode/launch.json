@@ -11,6 +11,12 @@
             "program": "auto_animated_list/example/lib/main.dart"
         },
         {
+            "name": "calendly_example",
+            "request": "launch",
+            "type": "dart",
+            "program": "calendly/example/lib/main.dart"
+        },
+        {
             "name": "custom_rating_bar_example",
             "request": "launch",
             "type": "dart",

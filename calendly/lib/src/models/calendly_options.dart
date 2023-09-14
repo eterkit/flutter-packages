@@ -14,6 +14,7 @@ class CalendlyOptions extends Equatable {
     this.embedDomain = '',
     this.shouldDisplayLoadingIndicator = true,
     this.prefillAnswers,
+    this.useSafeArea = true,
     this.loadingIndicator = const CircularProgressIndicator(
       color: _defaultPrimaryColor,
     ),
@@ -80,6 +81,11 @@ class CalendlyOptions extends Equatable {
   /// Whether to display [loadingIndicator] while [Calendly] is initially loading.
   final bool shouldDisplayLoadingIndicator;
 
+  /// Make sure that [Calendly] content is fully visible.
+  ///
+  /// Defaults to `true`.
+  final bool useSafeArea;
+
   /// Widget to display while [Calendly] is initially loading.
   final Widget loadingIndicator;
 
@@ -93,6 +99,7 @@ class CalendlyOptions extends Equatable {
         hideCookieBanner,
         shouldDisplayLoadingIndicator,
         prefillAnswers,
+        useSafeArea,
         loadingIndicator,
       ];
 }

@@ -86,7 +86,13 @@ class _CalendlyState extends State<Calendly> {
       ),
       child: _isLoading && widget.options.shouldDisplayLoadingIndicator
           ? Center(child: widget.options.loadingIndicator)
-          : WebViewWidget(controller: _webController),
+          : SafeArea(
+              top: widget.options.useSafeArea,
+              bottom: widget.options.useSafeArea,
+              left: widget.options.useSafeArea,
+              right: widget.options.useSafeArea,
+              child: WebViewWidget(controller: _webController),
+            ),
     );
   }
 }

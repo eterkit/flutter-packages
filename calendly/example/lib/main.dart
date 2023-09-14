@@ -34,11 +34,10 @@ class ExamplePage extends StatelessWidget {
       body: const Calendly(
         schedulingUrl: _schedulingUrl,
         options: CalendlyOptions(
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          hideEventTypeDetails: false,
+          hideEventTypeDetails: true,
           hideLandingPageDetails: true,
           hideCookieBanner: true,
+          useSafeArea: true,
           prefillAnswers: PrefillAnswers(
             name: 'Marc Sanny',
             firstName: 'Marc',

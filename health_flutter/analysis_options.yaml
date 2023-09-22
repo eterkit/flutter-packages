@@ -1,0 +1,60 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+  exclude:
+    - /**.g.dart
+    - test/**.g.dart
+  errors:
+    avoid_bool_literals_in_conditional_expressions: warning
+    avoid_void_async: warning
+    cancel_subscriptions: warning
+    invariant_booleans: warning
+    unnecessary_await_in_return: warning
+    unnecessary_null_aware_assignments: warning
+    unnecessary_parenthesis: warning
+    unnecessary_raw_strings: warning
+    unnecessary_statements: warning
+    prefer_final_locals: warning
+    prefer_int_literals: warning
+    sort_constructors_first: warning
+    sort_unnamed_constructors_first: warning
+
+linter:
+  rules:
+    - always_declare_return_types
+    - avoid_bool_literals_in_conditional_expressions
+    - avoid_positional_boolean_parameters
+    - avoid_redundant_argument_values
+    - avoid_returning_this
+    - avoid_slow_async_io
+    - avoid_types_on_closure_parameters
+    - avoid_unused_constructor_parameters
+    - avoid_void_async
+    - cancel_subscriptions
+    - join_return_with_assignment
+    - literal_only_boolean_expressions
+    - no_adjacent_strings_in_list
+    - only_throw_errors
+    - package_api_docs
+    - parameter_assignments
+    - prefer_final_in_for_each
+    - prefer_final_locals
+    - prefer_foreach
+    - prefer_int_literals
+    - prefer_interpolation_to_compose_strings
+    - prefer_single_quotes
+    - public_member_api_docs
+    - sort_constructors_first
+    - sort_unnamed_constructors_first
+    - throw_in_finally
+    - type_annotate_public_apis
+    - unnecessary_await_in_return
+    - unnecessary_lambdas
+    - unnecessary_null_aware_assignments
+    - unnecessary_parenthesis
+    - unnecessary_statements
+    - use_named_constants
+    - use_setters_to_change_properties
+    - use_string_buffers

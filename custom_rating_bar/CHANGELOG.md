@@ -1,3 +1,8 @@
+## 2.0.5+1
+
+* Upgrade dependencies
+* Upgrade FVM[Flutter Version Manager]
+
 ## 2.0.5
 
 * Upgrade dependencies

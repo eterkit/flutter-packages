@@ -32,7 +32,7 @@ class RatingBar extends StatefulWidget {
   ///
   /// The [filledIcon] & [emptyIcon] must not be null.
   const RatingBar.readOnly({
-    Key? key,
+    super.key,
     required this.filledIcon,
     required this.emptyIcon,
     this.maxRating = 5,
@@ -50,8 +50,7 @@ class RatingBar extends StatefulWidget {
         assert(
           !isHalfAllowed || halfFilledIcon != null,
           'Please provide halfFilledIcon if isHalfAllowed is true.',
-        ),
-        super(key: key);
+        );
 
   /// Icon used for filled part of the rating bar.
   final IconData filledIcon;

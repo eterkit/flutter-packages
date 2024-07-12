@@ -43,33 +43,30 @@ extension RequestGuardedMethodExtension on Permission {
         barrierLabel: barrierLabel,
         routeSettings: routeSettings,
         useRootNavigator: useRootNavigator,
-        builder: (context) => WillPopScope(
-          onWillPop: () async {
+        builder: (context) => PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) async {
+            if (didPop) return;
             Navigator.of(context).pop(status);
-            return true;
           },
           child: AlertDialog(
             backgroundColor: backgroundColor,
             insetPadding: insetPadding,
             contentPadding: EdgeInsets.zero,
-            content: Stack(
+            content: Column(
+              mainAxisSize:
+                  fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
               children: [
-                Column(
-                  mainAxisSize:
-                      fillAvailableSpace ? MainAxisSize.max : MainAxisSize.min,
-                  children: [
-                    PermissionGuard(
-                      permission: this,
-                      options: options.copyWith(
-                        requestOnInit: false,
-                        skipInitialChange: true,
-                        padding: contentPadding,
-                      ),
-                      onPermissionStatusChanged: (value) => status = value,
-                      onPermissionGranted: () => Navigator.of(context).pop(),
-                      child: const SizedBox.shrink(),
-                    ),
-                  ],
+                PermissionGuard(
+                  permission: this,
+                  options: options.copyWith(
+                    requestOnInit: false,
+                    skipInitialChange: true,
+                    padding: contentPadding,
+                  ),
+                  onPermissionStatusChanged: (value) => status = value,
+                  onPermissionGranted: () => Navigator.of(context).pop(),
+                  child: const SizedBox.shrink(),
                 ),
               ],
             ),

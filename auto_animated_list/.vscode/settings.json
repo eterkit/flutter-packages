@@ -1,5 +1,6 @@
 {
-    "cSpell.words": [
-        "diffutil"
-    ]
+  "cSpell.words": [
+    "diffutil"
+  ],
+  "dart.flutterSdkPath": ".fvm/versions/3.22.2"
 }

@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Upgrade dependencies
+* Fix [issue #5](https://github.com/eterkit/flutter-packages/issues/5)
+
 ## 2.0.0
 
 * Upgrade dependencies

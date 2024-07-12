@@ -184,5 +184,7 @@ class PermissionGuardOptions {
         description: description ?? this.description,
         action: action ?? this.action,
         titleBuilder: titleBuilder ?? this.titleBuilder,
+        descriptionBuilder: descriptionBuilder ?? this.descriptionBuilder,
+        actionBuilder: actionBuilder ?? this.actionBuilder,
       );
 }

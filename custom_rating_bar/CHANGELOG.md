@@ -1,3 +1,8 @@
+## 3.0.0
+
+* Upgrade dependencies
+* **[Breaking change]** Migrate to dart 3
+
 ## 2.0.5
 
 * Upgrade dependencies

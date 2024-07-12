@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - permission_handler_apple (9.0.4):
+  - permission_handler_apple (9.3.0):
     - Flutter
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
 
-PODFILE CHECKSUM: 8c83150796cf74ad0afd553bf99440314ce2fec8
+PODFILE CHECKSUM: abf21697a6c2b97378cbecc0f11ebd9a5147f0c2
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

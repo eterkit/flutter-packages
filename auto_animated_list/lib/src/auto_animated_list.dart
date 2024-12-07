@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-
-import 'package:diffutil_dart/diffutil.dart' as diffutil;
-
 import 'package:auto_animated_list/src/extensions/list_element_at_or_null.dart';
+import 'package:diffutil_dart/diffutil.dart' as diffutil;
+import 'package:flutter/material.dart';
 
 /// ListView widget that implicitly animates when `items` changes.
 class AutoAnimatedList<T> extends StatefulWidget {
   /// Creates a ListView widget that implicitly animates when `items` changes.
   const AutoAnimatedList({
-    Key? key,
+    super.key,
     required this.items,
     required this.itemBuilder,
     this.scrollDirection = Axis.vertical,
@@ -18,7 +16,8 @@ class AutoAnimatedList<T> extends StatefulWidget {
     this.physics,
     this.controller,
     this.padding,
-  }) : super(key: key);
+    this.equalityChecker,
+  });
 
   /// List of items that the [itemBuilder] should animate widgets for.
   final List<T> items;
@@ -98,6 +97,9 @@ class AutoAnimatedList<T> extends StatefulWidget {
   /// List items are only built when they're scrolled into view.
   final Widget Function(BuildContext, T, int, Animation<double>) itemBuilder;
 
+  /// Indicates if two items are equal.
+  final bool Function(T, T)? equalityChecker;
+
   @override
   State<AutoAnimatedList<T>> createState() => _AutoAnimatedListState<T>();
 }
@@ -139,7 +141,11 @@ class _AutoAnimatedListState<T> extends State<AutoAnimatedList<T>> {
     if (listState == null) return;
 
     final newList = widget.items;
-    final diffResult = diffutil.calculateListDiff<T>(oldList, newList);
+    final diffResult = diffutil.calculateListDiff<T>(
+      oldList,
+      newList,
+      equalityChecker: widget.equalityChecker,
+    );
     final updates = diffResult.getUpdates(batch: false);
     if (updates.isEmpty) return;
     for (final update in updates) {
